@@ -66,12 +66,16 @@ export function Card({ project }: { project: Project }) {
 
       {/* Bottom row: links */}
       <div className="mt-auto flex items-center gap-4 pt-4">
-        <a
-          href={project.href}
-          className="text-sm text-text-muted transition-colors hover:text-accent"
-        >
-          Live demo
-        </a>
+        {project.href && (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-text-muted transition-colors hover:text-accent"
+          >
+            Live demo
+          </a>
+        )}
         <a
           href={project.repoHref}
           target="_blank"

@@ -81,7 +81,7 @@ const caseStudies: CaseStudy[] = [
     description: "An AI SDR that sends outbound messages while enforcing opt-out handling and compliance rules automatically — verified against a real compliance test suite, not just described.",
     caveat: null,
     feedsInto: null,
-    link: null,
+    link: "https://compliance-ai-sdr.vercel.app",
   },
   {
     number: "07",

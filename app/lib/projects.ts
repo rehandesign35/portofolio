@@ -9,7 +9,7 @@ export interface Project {
   metric: { value: string; label: string };
   feedsInto: string;
   status: ProjectStatus;
-  href: string;
+  href?: string;
   repoHref: string;
 }
 
@@ -23,7 +23,6 @@ export const projects: Project[] = [
     metric: { value: "59 calls", label: "handled, zero missed" },
     feedsInto: "Feeds into → Multi-Agent Follow-Up",
     status: "launch-ready",
-    href: "#",
     repoHref: "https://github.com/rehandesign35",
   },
   {
@@ -62,7 +61,6 @@ export const projects: Project[] = [
     },
     feedsInto: "Infrastructure layer",
     status: "launch-ready",
-    href: "#",
     repoHref: "https://github.com/rehandesign35",
   },
   {
@@ -86,7 +84,7 @@ export const projects: Project[] = [
     metric: { value: "100%", label: "compliance test pass rate" },
     feedsInto: "Feeds into → Ops/Security Monitor",
     status: "launch-ready",
-    href: "#",
+    href: "https://compliance-ai-sdr.vercel.app",
     repoHref: "https://github.com/rehandesign35",
   },
   {
