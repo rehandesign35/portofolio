@@ -18,11 +18,12 @@ export const projects: Project[] = [
     id: "sam",
     number: "01",
     name: "Sam (Voice Agent)",
-    oneLiner: "Solar & home-services lead recovery via outbound voice.",
+    oneLiner: "Home-services lead recovery via outbound voice.",
     stack: ["Vapi", "Twilio", "Node.js"],
     metric: { value: "59 calls", label: "handled, zero missed" },
     feedsInto: "Feeds into → Multi-Agent Follow-Up",
     status: "launch-ready",
+    href: "https://vapi-solar-webhook.vercel.app/",
     repoHref: "https://github.com/rehandesign35",
   },
   {
@@ -61,6 +62,7 @@ export const projects: Project[] = [
     },
     feedsInto: "Infrastructure layer",
     status: "launch-ready",
+    href: "https://dashboard-livid-six-87.vercel.app/",
     repoHref: "https://github.com/rehandesign35",
   },
   {

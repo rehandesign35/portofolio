@@ -19,14 +19,14 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     number: "01",
-    title: "Sam — Solar Lead Recovery Voice Agent",
+    title: "Sam — Voice Agent for Lead Recovery",
     outcome: "Answers missed leads and books qualified calls automatically.",
     stats: ["59 calls handled", "6 leads qualified", "2 calls booked", "2:44 avg call duration"],
     tags: ["Vapi", "Twilio", "Vercel", "Webhooks"],
-    description: "An AI voice agent that calls back solar leads within minutes of form submission, qualifies them conversationally, and books consultations directly — built to prove the call-answering and qualification pipeline works end-to-end before conversion-rate claims matter.",
+    description: "An AI voice agent that calls back missed leads within minutes of form submission, qualifies them conversationally, and books consultations directly — built to prove the call-answering and qualification pipeline works end-to-end before conversion-rate claims matter.",
     caveat: "Call volume and reliability are the headline numbers, not conversion rate — conversion reflects seeded test data, not real ad spend.",
     feedsInto: "Feeds into → Follow-Up Agents",
-    link: null,
+    link: "https://vapi-solar-webhook.vercel.app/",
   },
   {
     number: "02",
@@ -59,7 +59,7 @@ const caseStudies: CaseStudy[] = [
     description: "An autonomous agent that monitors a target site, extracts structured signals, persists results, and alerts via Slack on a scheduled loop — infrastructure layer watching the system rather than a customer-facing project.",
     caveat: "Extraction accuracy and false-positive rate are still rough — the strongest proof point here is architectural resilience: the pipeline survived a full v1→v2 backend redesign with zero code changes.",
     feedsInto: null,
-    link: null,
+    link: "https://dashboard-livid-six-87.vercel.app/",
   },
   {
     number: "05",
