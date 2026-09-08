@@ -43,6 +43,14 @@ export function SystemDiagram() {
   return (
     <section id="system" className="py-24">
       <Container>
+        {/* Section header */}
+        <div className="max-w-2xl">
+          <p className="text-sm text-text-muted">System Architecture</p>
+          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+            How the seven agents connect
+          </h2>
+        </div>
+
         <motion.div
           initial={prefersReducedMotion ? false : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "visible"}
