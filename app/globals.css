@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0A0A0B;
+  --color-surface: #131316;
+  --color-surface-border: #232326;
+  --color-text-primary: #F2F1ED;
+  --color-text-muted: #9A9A9F;
+  --color-accent: #E8873A;
+  --color-accent-muted: #3A2A1A;
+
+  --color-layer-pipeline: #38BDF8;
+  --color-layer-pipeline-muted: #0C2D48;
+  --color-layer-infra: #A78BFA;
+  --color-layer-infra-muted: #1E1533;
+  --color-layer-oversight: #E8873A;
+  --color-layer-oversight-muted: #3A2A1A;
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-dm-sans);
+}
+
+html {
+  background-color: var(--color-background);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
