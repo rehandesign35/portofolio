@@ -2,6 +2,7 @@ import { Container } from "@/app/components/layout/Container";
 import { Header } from "@/app/components/layout/Header";
 import { Footer } from "@/app/components/layout/Footer";
 import { Hero } from "@/app/components/sections/Hero";
+import { About } from "@/app/components/sections/About";
 import { Projects } from "@/app/components/sections/Projects";
 import { SystemDiagram } from "@/app/components/sections/SystemDiagram";
 import { LiveDemo } from "@/app/components/sections/LiveDemo";
@@ -18,6 +19,7 @@ export default function Home() {
             <Hero />
           </section>
         </Container>
+        <About />
         <Projects />
         <SystemDiagram />
         <LiveDemo />
