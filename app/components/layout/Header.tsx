@@ -5,6 +5,7 @@ const navLinks = [
   { label: "Work", href: "#work" },
   { label: "System", href: "#system" },
   { label: "Case Studies", href: "#case-studies" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Header() {
