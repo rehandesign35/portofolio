@@ -72,8 +72,7 @@ export function Hero() {
         variants={childVariants}
         className="font-display text-5xl font-bold leading-tight tracking-tight md:text-7xl"
       >
-        AI systems that catch the leads your business is{" "}
-        <span className="text-accent">already losing.</span>
+        AI systems that catch the leads your business is already losing.
       </motion.h1>
 
       {/* Subhead */}
@@ -89,7 +88,7 @@ export function Hero() {
       <motion.div variants={childVariants} className="flex flex-wrap gap-10">
         {stats.map((stat) => (
           <div key={stat.value} className="flex flex-col gap-1">
-            <span className="font-display text-3xl font-bold text-accent">
+            <span className="font-display text-3xl font-bold text-text-primary">
               {stat.value}
             </span>
             <span className="max-w-[140px] text-sm leading-snug text-text-muted">
@@ -101,26 +100,20 @@ export function Hero() {
 
       {/* CTA row */}
       <motion.div variants={childVariants} className="flex items-center gap-4">
-        <motion.a
+        <a
           href="#system"
-          whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
-          whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
           className="rounded-full bg-accent px-7 py-3 font-medium text-background transition-colors hover:bg-accent/90"
         >
           See the system live
-        </motion.a>
-        <motion.a
+        </a>
+        <a
           href="https://github.com/rehandesign35"
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
-          whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
           className="rounded-full border border-surface-border px-7 py-3 font-medium text-text-primary transition-colors hover:bg-surface"
         >
           View source on GitHub
-        </motion.a>
+        </a>
       </motion.div>
     </motion.div>
   );

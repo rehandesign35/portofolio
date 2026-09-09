@@ -3,22 +3,43 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { Project } from "@/app/lib/projects";
 
+const categoryColors: Record<string, { base: string; hover: string }> = {
+  sam:       { base: "#38BDF8", hover: "#7DD3FC" },
+  "follow-up": { base: "#38BDF8", hover: "#7DD3FC" },
+  pricing:   { base: "#38BDF8", hover: "#7DD3FC" },
+  compliance:{ base: "#38BDF8", hover: "#7DD3FC" },
+  monitoring:  { base: "#A78BFA", hover: "#C4B5FD" },
+  "self-healing": { base: "#A78BFA", hover: "#C4B5FD" },
+  "signal-desk":  { base: "#E8873A", hover: "#F5A66A" },
+};
+
 export function Card({ project }: { project: Project }) {
   const prefersReducedMotion = useReducedMotion();
-  const isInfrastructure =
-    project.feedsInto === "Infrastructure layer" ||
-    project.feedsInto === "Watches the whole system";
+  const colors = categoryColors[project.id] ?? { base: "#232326", hover: "#3A3A3F" };
+
+  const feedsText = project.feedsInto;
+  const chevronIndex = feedsText.indexOf("→");
+  const hasChevron = chevronIndex !== -1;
+  const feedsLabel = hasChevron ? feedsText.slice(0, chevronIndex).trim() : feedsText;
+  const feedsTarget = hasChevron ? feedsText.slice(chevronIndex + 1).trim() : "";
 
   return (
     <motion.div
       id={`project-${project.id}`}
-      whileHover={prefersReducedMotion ? undefined : { y: -4 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="flex h-full flex-col rounded-lg border border-surface-border bg-surface p-6 transition-colors duration-200 hover:border-accent/40 hover:shadow-[0_0_20px_-4px] hover:shadow-accent/10"
+      whileHover={prefersReducedMotion ? undefined : { borderColor: colors.hover }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="flex h-full flex-col rounded-lg border bg-surface p-6"
+      style={{ borderColor: colors.base }}
     >
       {/* Top row: number + status */}
       <div className="mb-3 flex items-center gap-3">
-        <span className="font-mono text-sm text-accent">{project.number}</span>
+        <span className="font-mono text-sm" style={{ color: colors.base }}>{project.number}</span>
+        {project.id === "pricing" && (
+          <span className="inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs" style={{ borderColor: colors.base, color: colors.base }}>
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full" style={{ backgroundColor: colors.base }} />
+            Live
+          </span>
+        )}
         {project.status === "early-testing" && (
           <span className="rounded-full border border-surface-border px-2 py-0.5 text-xs text-text-muted">
             Early testing
@@ -58,11 +79,17 @@ export function Card({ project }: { project: Project }) {
       <div className="my-4 border-t border-surface-border" />
 
       {/* Feeds into */}
-      <p
-        className={`text-xs ${isInfrastructure ? "text-text-muted" : "text-text-muted italic"}`}
-      >
-        {project.feedsInto}
-      </p>
+      {feedsTarget ? (
+        <p className="flex items-center gap-1.5 text-xs text-text-muted italic">
+          <span>{feedsLabel}</span>
+          <svg width={12} height={10} viewBox="0 0 12 10" className="shrink-0" style={{ color: colors.base }}>
+            <path d="M2 0L10 4L2 8" strokeWidth={1.5} fill="none" stroke="currentColor" />
+          </svg>
+          <span>{feedsTarget}</span>
+        </p>
+      ) : (
+        <p className="text-xs text-text-muted italic">{feedsText}</p>
+      )}
 
       {/* Bottom row: links */}
       <div className="mt-auto flex items-center gap-4 pt-4">

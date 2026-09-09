@@ -1,13 +1,11 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/app/components/layout/Container";
 
 const DEMO_URL = "https://rag-pricing-assistant.vercel.app/";
 
 export function LiveDemo() {
-  const prefersReducedMotion = useReducedMotion();
   const [loaded, setLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -28,14 +26,7 @@ export function LiveDemo() {
   }, []);
 
   return (
-    <motion.section
-      id="demo"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="py-24"
-    >
+    <section id="demo" className="py-24">
       <Container>
         <div className="max-w-2xl">
           <p className="text-sm text-text-muted">Live demo</p>
@@ -49,7 +40,7 @@ export function LiveDemo() {
         </div>
 
         <div
-          className="mt-12 relative overflow-hidden rounded-lg border border-accent/20 bg-surface"
+          className="mt-12 relative overflow-hidden rounded-lg border border-surface-border bg-surface"
         >
           {/* Loading skeleton */}
           {!loaded && !timedOut && (
@@ -66,7 +57,7 @@ export function LiveDemo() {
                 href={DEMO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent transition-colors hover:text-accent/80"
+                className="text-text-muted transition-colors hover:text-text-primary"
               >
                 Open in new tab ↗
               </a>
@@ -91,12 +82,12 @@ export function LiveDemo() {
             href={DEMO_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-text-muted transition-colors hover:text-accent"
+            className="text-sm text-text-muted transition-colors hover:text-text-primary"
           >
             Open in new tab ↗
           </a>
         </div>
       </Container>
-    </motion.section>
+    </section>
   );
 }

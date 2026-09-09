@@ -1,7 +1,5 @@
 "use client";
 
-import { type Variants } from "framer-motion";
-import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/app/components/layout/Container";
 
 interface CaseStudy {
@@ -96,29 +94,14 @@ const caseStudies: CaseStudy[] = [
   },
 ];
 
-const blockVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
-
 function CaseStudyBlock({ study }: { study: CaseStudy }) {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
-    <motion.article
-      variants={blockVariants}
-      initial={prefersReducedMotion ? false : "hidden"}
-      whileInView={prefersReducedMotion ? undefined : "visible"}
-      viewport={{ once: true, amount: 0.2 }}
+    <article
       className="rounded-lg border border-surface-border bg-surface p-6 md:p-8"
     >
       {/* Top row: number */}
       <div className="mb-4 flex items-center gap-3">
-        <span className="font-mono text-sm text-accent">{study.number}</span>
+        <span className="font-mono text-sm text-text-muted">{study.number}</span>
       </div>
 
       {/* Title */}
@@ -128,7 +111,7 @@ function CaseStudyBlock({ study }: { study: CaseStudy }) {
             href={study.link.startsWith("http") ? study.link : `https://${study.link}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-accent"
+            className="transition-colors hover:text-text-muted"
           >
             {study.title}
           </a>
@@ -193,19 +176,17 @@ function CaseStudyBlock({ study }: { study: CaseStudy }) {
             href={study.link.startsWith("http") ? study.link : `https://${study.link}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-text-muted transition-colors hover:text-accent"
+            className="text-sm text-text-muted transition-colors hover:text-text-primary"
           >
             View live ↗
           </a>
         </div>
       )}
-    </motion.article>
+    </article>
   );
 }
 
 export function CaseStudies() {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <section id="case-studies" className="py-24">
       <Container>
@@ -220,7 +201,7 @@ export function CaseStudies() {
           </p>
         </div>
 
-        {/* Case study blocks — each animates independently on scroll */}
+        {/* Case study blocks */}
         <div className="mt-16 flex flex-col gap-10 sm:gap-12">
           {caseStudies.map((study) => (
             <CaseStudyBlock key={study.number} study={study} />
